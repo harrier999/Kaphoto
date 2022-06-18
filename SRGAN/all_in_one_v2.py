@@ -12,7 +12,6 @@ def denoise_and_upscale(IMAGE_NAME, UPSCALE_FACTOR = 4, DENOISE_STRENGTH = 2, TE
     model = Generator(UPSCALE_FACTOR).eval()
     if TEST_MODE:
         model.cuda()
-        model.cpu()
         model.load_state_dict(torch.load('inference_model/' + MODEL_NAME)) #모델 경로
     else:
         model.load_state_dict(torch.load('inference_model/' + MODEL_NAME, map_location=lambda storage, loc: storage))

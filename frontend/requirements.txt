@@ -1,0 +1,4 @@
+requests==2.27.1
+streamlit==1.9.0
+streamlit_cropper==0.2.0
+requests_toolbelt

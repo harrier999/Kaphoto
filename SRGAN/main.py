@@ -34,7 +34,7 @@ def get_similar_fashion(file: bytes = File(...)):
 	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 4, DENOISE_STRENGTH = 2, TEST_MODE = True, MODEL_NAME = 'netG_epoch_4_100.pth')
 	
 	bytes_io = io.BytesIO()
-	img.save(bytes_io, format="PNG")
+	image.save(bytes_io, format="PNG")
 
 	return Response(bytes_io.getvalue(), media_type="image/png")
 	

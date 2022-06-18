@@ -28,7 +28,8 @@ def denoise_and_upscale(IMAGE_NAME, UPSCALE_FACTOR = 4, DENOISE_STRENGTH = 2, TE
     cv2.imwrite(temp_image, dst)
 
     #upscale
-    image = Image.open(temp_image)
+    # 
+    image = dst
     image = Variable(ToTensor()(image), volatile=True).unsqueeze(0)
     if TEST_MODE:
         image = image.cuda()

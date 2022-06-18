@@ -5,4 +5,5 @@ pip3 install -r requirements_all.txt
 streamlit run frontend/frontend.py
 
 # backend
-python SRGAN/main.py
+cd SRGAN
+python main.py

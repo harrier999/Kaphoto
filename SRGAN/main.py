@@ -25,7 +25,20 @@ def read_root():
 	return {"name": "Backend/img_test"}
 
 
-@app.post("/getSimilarFashion")
+@app.post("/getSimilarFashion2")
+def get_similar_fashion(file: bytes = File(...)):
+	img = io.BytesIO(file)
+	img = Image.open(img)
+	img = img.convert("RGB")
+	img.save('./inference_input_image/' + 'test_image.jpg')
+	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 2, DENOISE_STRENGTH = 2, TEST_MODE = True, MODEL_NAME = 'netG_epoch_2_100.pth')
+	
+	bytes_io = io.BytesIO()
+	image.save(bytes_io, format="PNG")
+
+	return Response(bytes_io.getvalue(), media_type="image/png")
+	
+@app.post("/getSimilarFashion4")
 def get_similar_fashion(file: bytes = File(...)):
 	img = io.BytesIO(file)
 	img = Image.open(img)
@@ -39,6 +52,21 @@ def get_similar_fashion(file: bytes = File(...)):
 	return Response(bytes_io.getvalue(), media_type="image/png")
 	
 	
+@app.post("/getSimilarFashion8")
+def get_similar_fashion(file: bytes = File(...)):
+	img = io.BytesIO(file)
+	img = Image.open(img)
+	img = img.convert("RGB")
+	img.save('./inference_input_image/' + 'test_image.jpg')
+	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 8, DENOISE_STRENGTH = 2, TEST_MODE = True, MODEL_NAME = 'netG_epoch_8_100.pth')
+	
+	bytes_io = io.BytesIO()
+	image.save(bytes_io, format="PNG")
+
+	return Response(bytes_io.getvalue(), media_type="image/png")
+	
+	
+
 
 
 

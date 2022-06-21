@@ -30,7 +30,7 @@ def convert_pil_image_to_byte_array(img):
 
 
 def getData(img_file, option, option_denoise):
-    server_url = backend + 'get_image' + option + '/' + 'option_denoise=' + option_denoise
+    server_url = backend + 'get_image' + option + '/' + option_denoise
     # m = MultipartEncoder(fields={"category": category, "file": ("filename", img_file, "image/jpeg")}) # category 추가시 충돌 버그
     
     m = MultipartEncoder(fields={"file": ("filename", img_file, "image/jpeg")})

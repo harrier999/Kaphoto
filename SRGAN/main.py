@@ -31,7 +31,7 @@ def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	img = Image.open(img)
 	img = img.convert("RGB")
 	img.save('./inference_input_image/' + 'test_image.jpg')
-	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 2, DENOISE_STRENGTH = option_denoise, TEST_MODE = True, MODEL_NAME = 'netG_epoch_2_100.pth')
+	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 2, DENOISE_STRENGTH = int(option_denoise), TEST_MODE = True, MODEL_NAME = 'netG_epoch_2_100.pth')
 	
 	bytes_io = io.BytesIO()
 	image.save(bytes_io, format="PNG")
@@ -44,7 +44,7 @@ def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	img = Image.open(img)
 	img = img.convert("RGB")
 	img.save('./inference_input_image/' + 'test_image.jpg')
-	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 4, DENOISE_STRENGTH = option_denoise	, TEST_MODE = True, MODEL_NAME = 'netG_epoch_4_100.pth')
+	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 4, DENOISE_STRENGTH = int(option_denoise)	, TEST_MODE = True, MODEL_NAME = 'netG_epoch_4_100.pth')
 	
 	bytes_io = io.BytesIO()
 	image.save(bytes_io, format="PNG")
@@ -58,7 +58,7 @@ def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	img = Image.open(img)
 	img = img.convert("RGB")
 	img.save('./inference_input_image/' + 'test_image.jpg')
-	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 8, DENOISE_STRENGTH = option_denoise, TEST_MODE = True, MODEL_NAME = 'netG_epoch_8_100.pth')
+	image = denoise_and_upscale(IMAGE_NAME='test_image.jpg', UPSCALE_FACTOR = 8, DENOISE_STRENGTH = int(option_denoise), TEST_MODE = True, MODEL_NAME = 'netG_epoch_8_100.pth')
 	
 	bytes_io = io.BytesIO()
 	image.save(bytes_io, format="PNG")

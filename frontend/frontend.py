@@ -29,8 +29,8 @@ def convert_pil_image_to_byte_array(img):
     return img_byte_array
 
 
-def getData(img_file, option):
-    server_url = backend + 'getSimilarFashion' +option
+def getData(img_file, option, option_denoise):
+    server_url = backend + 'getSimilarFashion' + option + '/' + 'option_denoise=' + option_denoise
     # m = MultipartEncoder(fields={"category": category, "file": ("filename", img_file, "image/jpeg")}) # category 추가시 충돌 버그
     
     m = MultipartEncoder(fields={"file": ("filename", img_file, "image/jpeg")})
@@ -78,6 +78,7 @@ if img_file:
 
 # select ratio
 option = st.selectbox('업스케일 비율을 선택해 주세요',('X2', 'X4', 'X8'))
+option_denoise = st.selectbox('노이즈 감소 비율을 선택해 주세요', ('0', '1', '2', '3', '4'))
 
 # 업로드 버튼을 누를 시 crop된 이미지를 확인, backend로 post 후에 image가 있는 dict를 받아옴
 if upload:
@@ -87,11 +88,11 @@ if upload:
             img_np_array = cropped_img_bytearray
             # ConnectionError: HTTPConnectionPool 방지
             try:
-                result = getData(img_np_array, option) 
+                result = getData(img_np_array, option, option_denoise) 
                 pass
             except:
                 time.sleep(2)
-                result = getData(img_np_array, option)
+                result = getData(img_np_array, option, option_denoise)
         upscale_image = Image.open(io.BytesIO(result.content)).convert("RGB")
 
         st.image(upscale_image, use_column_width=True)

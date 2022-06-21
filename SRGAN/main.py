@@ -25,7 +25,7 @@ def read_root():
 	return {"name": "Backend/img_test"}
 
 
-@app.post("/getSimilarFashionX2/{option_denoise}")
+@app.post("/get_imageX2/{option_denoise}")
 def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	img = io.BytesIO(file)
 	img = Image.open(img)
@@ -38,7 +38,7 @@ def get_similar_fashion(option_denoise, file: bytes = File(...)):
 
 	return Response(bytes_io.getvalue(), media_type="image/png")
 	
-@app.post("/getSimilarFashionX4/{option_denoise}")
+@app.post("/get_imageX4/{option_denoise}")
 def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	img = io.BytesIO(file)
 	img = Image.open(img)
@@ -52,7 +52,7 @@ def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	return Response(bytes_io.getvalue(), media_type="image/png")
 	
 	
-@app.post("/getSimilarFashionX8/{option_denoise}")
+@app.post("/get_imageX8/{option_denoise}")
 def get_similar_fashion(option_denoise, file: bytes = File(...)):
 	img = io.BytesIO(file)
 	img = Image.open(img)

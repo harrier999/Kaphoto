@@ -11,9 +11,9 @@ import time
 import argparse
 from yaml import parse
 
-parser = argparse.ArgumentParser(description="--docker=True/False, default=False")
+parser = argparse.ArgumentParser(description="--docker=True/False, default=True")
 docker_choices = ('True', 'Fasle')
-parser.add_argument('--docker', choices=docker_choices, default='False', help="--docker=True/False, default=False")
+parser.add_argument('--docker', choices=docker_choices, default='False', help="--docker=True/False, default=True")
 
 args = parser.parse_args()
 

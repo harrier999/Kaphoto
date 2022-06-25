@@ -1,0 +1,9 @@
+requests_toolbelt
+fastapi==0.75.2
+uvicorn==0.17.6
+python-multipart
+torch==1.7.1
+torchvision==0.8.2
+scikit-learn==1.1.0
+wandb==0.12.16
+Pillow==9.0.1
